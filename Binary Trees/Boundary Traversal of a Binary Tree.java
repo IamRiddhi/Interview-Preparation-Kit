@@ -1,49 +1,66 @@
-   void getLeftNodes(Node root,ArrayList<Node> lst)
+public class Solution {
+
+/*	Binary Tree Node class
+ * 
+ * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+		
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	*/
+	public static void printLeftBoundary(BinaryTreeNode<Integer> root)
     {
-        if(root==null)
+    	if(root==null)
           return;
-        lst.add(root);
-        if(root.left==null)
-          getLeftNodes(root.right,lst);
-        else
-          getLeftNodes(root.left,lst);
+      	if(root.left!=null)
+        {
+          System.out.print(root.data+" ");
+          printLeftBoundary(root.left);
+        }  
+      	else if(root.right!=null)
+        {
+        	System.out.print(root.data+" ");
+          	printLeftBoundary(root.right); 
+        }
     }
-     void getRightNodes(Node root,ArrayList<Node> lst)
+  	public static void printRightBoundary(BinaryTreeNode<Integer> root)
     {
-        if(root==null)
+		if(root==null)
           return;
-        if(root.right==null)
-          getRightNodes(root.left,lst);
-        else
-          getRightNodes(root.right,lst);
-        lst.add(root);
+      	if(root.right!=null)
+        {
+          	printRightBoundary(root.right); 
+          	System.out.print(root.data+" ");
+        } 
+      	else if(root.left!=null)
+        {
+          printRightBoundary(root.left);
+          System.out.print(root.data+" ");
+        }  
     }
-     void getLeafNodes(Node root,ArrayList<Node> lst)
-      {
-          if(root==null)
-            return;
-          if(root.left==null && root.right==null)
-            lst.add(root);
-          getLeafNodes(root.left,lst);
-          getLeafNodes(root.right,lst);
-      }
-  void printBoundary(Node root)
+  	public static void printLeaves(BinaryTreeNode<Integer> root)
     {
-        LinkedHashSet<Node> set = new LinkedHashSet<>();
-        ArrayList<Node> left = new ArrayList<>();
-        getLeftNodes(root.left,left);
-        ArrayList<Node> right = new ArrayList<>();
-        getRightNodes(root.right,right);
-        ArrayList<Node> leaves =new ArrayList<>();
-        getLeafNodes(root,leaves);
-        set.add(root);
-        for(Node t: left)
-          set.add(t);
-        for(Node t: leaves)
-          set.add(t);
-        for(Node t: right)
-          set.add(t);
-        for(Node t: set)
-            System.out.print(t.data+" ");
+      	if(root==null)
+          return;
+    	printLeaves(root.left);
+      	if(root.left==null && root.right==null)
+          System.out.print(root.data+" ");
+      	printLeaves(root.right);
     }
-  
+	public static void boundaryTraversal(BinaryTreeNode<Integer> root)
+    {
+      	if(root!=null)
+        {
+          	System.out.print(root.data+" ");
+			printLeftBoundary(root.left);
+          	printLeaves(root.left);
+          	printLeaves(root.right);
+          	printRightBoundary(root.right);
+        }
+	}
+	
+}
