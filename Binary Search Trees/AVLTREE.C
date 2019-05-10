@@ -398,13 +398,13 @@ void display(avlTree *root, int jumps)
 
     if(root != NULL)
     {
-        printf("ÀÄÄ%d\n", root->key) ;
+        printf("Ã€Ã„Ã„%d\n", root->key) ;
         jumps ++ ;
         display(root->left, jumps) ;
         display(root->right, jumps) ;
     }
     else
-       puts("ÀÄÄ#") ;
+       puts("Ã€Ã„Ã„#") ;
 
 }
 
@@ -437,11 +437,11 @@ int show(avlTree *root, int x, int y, int *w, int *h)
 	   /* Print graphical line for the left subtree */
 	   if(lw > 0)
 	   {
-		 gotoxy(leftX, y) ; putchar('Ú') ;
+		 gotoxy(leftX, y) ; putchar('Ãš') ;
 		 for(i = leftX+1 ; i < x ; i ++)
 		 {
 		    gotoxy(i, y) ;
-		    putchar('Ä') ;
+		    putchar('Ã„') ;
 		 }
 	   }
 
@@ -451,9 +451,9 @@ int show(avlTree *root, int x, int y, int *w, int *h)
 		 for(i = x + GAPS ; i <= rightX ; i ++)
 		 {
 		    gotoxy(i, y) ;
-		    putchar('Ä') ;
+		    putchar('Ã„') ;
 		 }
-		 gotoxy(rightX, y) ; putchar('¿') ;
+		 gotoxy(rightX, y) ; putchar('Â¿') ;
 	   }
 
 
