@@ -15,7 +15,7 @@ vector<int> Solution::nextPermutation(vector<int> &A) {
                 f++;
                 l--;
             }
-            int ind = lower_bound(A.begin()+i+1,A.end(),A[i])-A.begin();
+            int ind = upper_bound(A.begin()+i+1,A.end(),A[i])-A.begin();
             int t = A[i];
             A[i] = A[ind];
             A[ind] = t;
